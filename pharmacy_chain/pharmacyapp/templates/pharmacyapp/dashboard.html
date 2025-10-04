@@ -1,0 +1,133 @@
+{% extends 'pharmacyapp/base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2 class="animate__animated animate__fadeInDown">
+            <i class="fas fa-chart-line me-2"></i>Supply Chain Dashboard
+        </h2>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white animate__animated animate__fadeInLeft">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-pills me-2"></i>Total Medicines</h5>
+                <h2 class="card-text">{{ counts.total }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white animate__animated animate__fadeInLeft delay-1">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-check-circle me-2"></i>Delivered</h5>
+                <h2 class="card-text">{{ counts.delivered }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white animate__animated animate__fadeInLeft delay-2">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-truck me-2"></i>In Transit</h5>
+                <h2 class="card-text">{{ counts.in_transit }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white animate__animated animate__fadeInLeft delay-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-clock me-2"></i>Pending</h5>
+                <h2 class="card-text">{{ counts.pending }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card animate__animated animate__fadeInUp">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-list me-2"></i>Active Supply Chains
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Medicine</th>
+                                <th>Manufacturer</th>
+                                <th>Distributor</th>
+                                <th>Pharmacy</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for supply_chain in supply_chains %}
+                            <tr class="animate__animated animate__fadeIn row-delay-{{ forloop.counter0|default:0 }}">
+                                <td>
+                                    <i class="fas fa-capsules me-2"></i>
+                                    {{ supply_chain.medicine.name }}
+                                </td>
+                                <td>
+                                    <i class="fas fa-industry me-2"></i>
+                                    {{ supply_chain.manufacturer.name }}
+                                </td>
+                                <td>
+                                    <i class="fas fa-truck-loading me-2"></i>
+                                    {{ supply_chain.distributor.name }}
+                                </td>
+                                <td>
+                                    <i class="fas fa-clinic-medical me-2"></i>
+                                    {{ supply_chain.pharmacy.name }}
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">
+                                        <i class="fas fa-boxes me-1"></i>
+                                        {{ supply_chain.quantity }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-{{ supply_chain.status|lower }}">
+                                        <i class="fas fa-circle me-1"></i>
+                                        {{ supply_chain.status }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <form method="post" action="{% url 'update_supply_chain_status' supply_chain.pk %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <div class="input-group">
+                                            <select name="status" class="form-select form-select-sm">
+                                                <option value="pending">Pending</option>
+                                                <option value="in_transit">In Transit</option>
+                                                <option value="delivered">Delivered</option>
+                                                <option value="cancelled">Cancelled</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-save"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <div class="alert alert-info animate__animated animate__fadeIn">
+                                        <i class="fas fa-info-circle me-2"></i>No supply chains found.
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

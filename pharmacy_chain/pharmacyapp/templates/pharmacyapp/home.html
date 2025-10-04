@@ -1,0 +1,284 @@
+{% extends 'pharmacyapp/base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                <h1 class="display-3 fw-bold mb-4 text-white">Pharmacy Supply Chain Management</h1>
+                <p class="lead mb-4 text-white-50">Revolutionizing pharmaceutical supply chain with blockchain technology. Track, trace, and manage your medicine supply chain with transparency and security.</p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-chart-line me-2"></i>Get Started
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-info-circle me-2"></i>Learn More
+                    </a>
+                </div>
+                <div class="mt-5 d-flex gap-4">
+                    <div class="text-center">
+                        <h3 class="text-white mb-0">{{ stats.total_medicines }}</h3>
+                        <p class="text-white-50 mb-0">Medicines</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-white mb-0">{{ stats.active_supply_chains }}</h3>
+                        <p class="text-white-50 mb-0">Active Chains</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-white mb-0">{{ stats.completed_deliveries }}</h3>
+                        <p class="text-white-50 mb-0">Deliveries</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 animate__animated animate__fadeInRight">
+                <div class="hero-image-container">
+                    <img src="https://img.freepik.com/free-vector/pharmacy-concept-illustration_114360-1066.jpg" alt="Pharmacy Supply Chain" class="img-fluid rounded-3 shadow-lg">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-shield-alt text-primary"></i>
+                        <span>Secure</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-chart-line text-success"></i>
+                        <span>Trackable</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-clock text-warning"></i>
+                        <span>Real-time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-wave">
+        
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 animate__animated animate__fadeInUp">
+                    <div class="card-body text-center">
+                        <i class="fas fa-pills fa-3x mb-3 text-primary"></i>
+                        <h3 class="card-title">{{ stats.total_medicines }}</h3>
+                        <p class="card-text">Total Medicines</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <div class="card-body text-center">
+                        <i class="fas fa-truck fa-3x mb-3 text-success"></i>
+                        <h3 class="card-title">{{ stats.active_supply_chains }}</h3>
+                        <p class="card-text">Active Supply Chains</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fa-3x mb-3 text-info"></i>
+                        <h3 class="card-title">{{ stats.completed_deliveries }}</h3>
+                        <p class="card-text">Completed Deliveries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 animate__animated animate__fadeInDown">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="text-center animate__animated animate__fadeInLeft">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-industry fa-3x mb-3 text-primary"></i>
+                    <h4>Manufacturer</h4>
+                    <p>Create and register medicines</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center animate__animated animate__fadeInLeft" style="animation-delay: 0.2s">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-truck fa-3x mb-3 text-success"></i>
+                    <h4>Distributor</h4>
+                    <p>Handle logistics and delivery</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center animate__animated animate__fadeInRight" style="animation-delay: 0.2s">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-clinic-medical fa-3x mb-3 text-info"></i>
+                    <h4>Pharmacy</h4>
+                    <p>Receive and verify medicines</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center animate__animated animate__fadeInRight">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-check-circle fa-3x mb-3 text-warning"></i>
+                    <h4>Verification</h4>
+                    <p>Complete the supply chain</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center animate__animated animate__fadeInUp">
+                <h2 class="mb-4">Ready to Transform Your Supply Chain?</h2>
+                <p class="lead mb-4">Join our platform and experience the future of pharmaceutical supply chain management.</p>
+                <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket me-2"></i>Get Started Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 100px 0;
+        margin-top: -2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('https://img.freepik.com/free-vector/abstract-medical-wallpaper-template-design_53876-61802.jpg') center/cover;
+        opacity: 0.1;
+    }
+
+    .min-vh-75 {
+        min-height: 75vh;
+    }
+
+    .hero-image-container {
+        position: relative;
+        padding: 20px;
+    }
+
+    .floating-card {
+        position: absolute;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .card-1 {
+        top: 20%;
+        left: 0;
+        animation-delay: 0s;
+    }
+
+    .card-2 {
+        top: 50%;
+        right: 0;
+        animation-delay: 1s;
+    }
+
+    .card-3 {
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 2s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        line-height: 0;
+    }
+
+    .hero-section .btn-outline-light {
+        border-width: 2px;
+    }
+
+    .hero-section .btn-outline-light:hover {
+        background: white;
+        color: var(--primary-color);
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-weight: bold;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        color: white;
+    }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .features-section .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .how-it-works-section .step-number {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    }
+
+    .stats-section {
+        background-color: var(--bg-color);
+    }
+
+    .features-section {
+        background-color: var(--card-bg);
+    }
+
+    .how-it-works-section {
+        background-color: var(--bg-color);
+    }
+</style>
+{% endblock %} 

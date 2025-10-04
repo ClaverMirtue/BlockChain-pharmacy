@@ -1,0 +1,111 @@
+{% extends 'pharmacyapp/base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2 class="animate__animated animate__fadeInDown">
+            <i class="fas fa-plus-circle me-2"></i>Create New Supply Chain
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card animate__animated animate__fadeInUp">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-clipboard-list me-2"></i>Supply Chain Details
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="medicine" class="form-label">
+                            <i class="fas fa-pills me-2"></i>Medicine
+                        </label>
+                        <select name="medicine" id="medicine" class="form-select" required>
+                            <option value="">Select Medicine</option>
+                            {% for medicine in medicines %}
+                            <option value="{{ medicine.id }}">{{ medicine.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="manufacturer" class="form-label">
+                            <i class="fas fa-industry me-2"></i>Manufacturer
+                        </label>
+                        <select name="manufacturer" id="manufacturer" class="form-select" required>
+                            <option value="">Select Manufacturer</option>
+                            {% for manufacturer in manufacturers %}
+                            <option value="{{ manufacturer.id }}">{{ manufacturer.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="distributor" class="form-label">
+                            <i class="fas fa-truck-loading me-2"></i>Distributor
+                        </label>
+                        <select name="distributor" id="distributor" class="form-select" required>
+                            <option value="">Select Distributor</option>
+                            {% for distributor in distributors %}
+                            <option value="{{ distributor.id }}">{{ distributor.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="pharmacy" class="form-label">
+                            <i class="fas fa-clinic-medical me-2"></i>Pharmacy
+                        </label>
+                        <select name="pharmacy" id="pharmacy" class="form-select" required>
+                            <option value="">Select Pharmacy</option>
+                            {% for pharmacy in pharmacies %}
+                            <option value="{{ pharmacy.id }}">{{ pharmacy.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="quantity" class="form-label">
+                            <i class="fas fa-boxes me-2"></i>Quantity
+                        </label>
+                        <input type="number" name="quantity" id="quantity" class="form-control" required min="1">
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save me-2"></i>Create Supply Chain
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card animate__animated animate__fadeInRight">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-info-circle me-2"></i>Information
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Tips:</h6>
+                    <ul class="mb-0">
+                        <li>Select a valid medicine from the list</li>
+                        <li>Choose the appropriate manufacturer</li>
+                        <li>Select a distributor for delivery</li>
+                        <li>Choose the destination pharmacy</li>
+                        <li>Enter the quantity of medicine</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
